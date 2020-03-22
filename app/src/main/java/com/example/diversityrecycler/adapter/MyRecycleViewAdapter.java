@@ -1,17 +1,26 @@
-package com.example.diversityrecycler;
+package com.example.diversityrecycler.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.diversityrecycler.R;
 import com.example.diversityrecycler.adapter.ImageAdapter;
 import com.example.diversityrecycler.bean.DataBean;
+import com.example.diversityrecycler.bean.SwipeCardBean;
+import com.example.diversityrecycler.util.CardConfig;
+import com.example.diversityrecycler.util.OverLayCardLayoutManager;
+import com.example.diversityrecycler.util.RenRenCallback;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 
@@ -24,14 +33,14 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     //布局标识集合
     private final List<Integer> typeList;
 
-    private List<String> list=new ArrayList<>();
-    private List<String> listtit=new ArrayList<>();
 
     //设置常量
     private static final int TYPE_THREE = 3;
@@ -43,24 +52,19 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     public MyRecycleViewAdapter(Context context, List<Integer> typeList) {
         this.context = context;
         this.typeList = typeList;
-        for (int i = 0; i <4 ; i++) {
-            list.add("http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg");
-
-            listtit.add("demo");
-        }
 
     }
 
 
     @Override
     public int getItemViewType(int position) {
-        if (typeList.get(position) == 2) {
+        if (typeList.get(position) == 1) {
             return TYPE_THREE;
         } else if (typeList.get(position) == 0) {
             return TYPE_TWO;
-        } else if (typeList.get(position) == 1) {
+        } else if (typeList.get(position) == 2) {
             return TYPE_ONE;
-        } else if (typeList.get(position) == 4) {
+        } else if (typeList.get(position) == 3) {
             return TYPE_FOUR;
         }
         return 1;
@@ -115,7 +119,6 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.View
                         Toast.makeText(context, "点击" + position, Toast.LENGTH_SHORT).show();
 
                     }
-
                     @Override
                     public void onBannerChanged(int position) {
 
@@ -132,6 +135,16 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.View
                 break;
 
             case TYPE_FOUR:
+                List<SwipeCardBean> mDatas = SwipeCardBean.initDatas();
+                FourViewHolder fourViewHolder = (FourViewHolder) holder;
+                fourViewHolder.recyclerView.setLayoutManager(new OverLayCardLayoutManager());
+                Myadapter myadapter=new Myadapter( mDatas,context);
+                fourViewHolder.recyclerView.setAdapter(myadapter);
+
+                CardConfig.initConfig(context);
+                ItemTouchHelper.Callback callback = new RenRenCallback(fourViewHolder.recyclerView, myadapter, mDatas);
+                ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+                itemTouchHelper.attachToRecyclerView(fourViewHolder.recyclerView);
 
                 break;
 
@@ -177,10 +190,10 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
 
     public class FourViewHolder extends RecyclerView.ViewHolder {
-
+        RecyclerView recyclerView;
         public FourViewHolder(View itemView) {
             super(itemView);
-
+            recyclerView=itemView.findViewById(R.id.rv_1);
         }
 
     }

@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.diversityrecycler.adapter.MyRecycleViewAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+
     private List<Integer> typeList=new ArrayList<>();
 
     @Override
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         initParam();
 
         adapter.notifyDataSetChanged();
+
+
+
     }
 
     private void initParam() {

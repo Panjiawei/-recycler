@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.diversityrecycler"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -36,4 +36,7 @@ dependencies {
 
     implementation 'com.youth.banner:banner:2.0.0-alpha02'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
 }

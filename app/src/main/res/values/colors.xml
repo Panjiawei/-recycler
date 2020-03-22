@@ -9,4 +9,24 @@
     <color name="textColor">#BDBDBD</color>
 
     <color name="main_color">#5CB85C</color>
+
+
+
+    <color name="gradient_start">#FFA555</color>
+    <color name="gradient_end">#F67710</color>
+
+    <color name="background">#f5f6f7</color>
+    <color name="white">#ffffff</color>
+    <color name="title">#262626</color>
+    <color name="main">#ff8e00</color>
+    <color name="imp_text_color">#000000</color>
+    <color name="light_line_color">#EEEEEE</color>
+    <color name="bg_sky_blue">#2882FE</color>
+    <color name="dbdbdb">#FFDBDBDB</color>
+
+
+    <!-- 分割线颜色-->
+    <color name="divider">#E5E5E5</color>
+    <color name="color_262626">#262626</color>
+
 </resources>
