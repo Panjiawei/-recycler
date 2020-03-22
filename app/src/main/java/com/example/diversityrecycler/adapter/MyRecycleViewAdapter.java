@@ -1,6 +1,7 @@
 package com.example.diversityrecycler.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.diversityrecycler.Main2Activity;
 import com.example.diversityrecycler.R;
 import com.example.diversityrecycler.adapter.ImageAdapter;
 import com.example.diversityrecycler.bean.DataBean;
@@ -117,6 +119,8 @@ public class MyRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.View
                     @Override
                     public void OnBannerClick(Object data, int position) {
                         Toast.makeText(context, "点击" + position, Toast.LENGTH_SHORT).show();
+
+                        context.startActivity(new Intent(context, Main2Activity.class));
 
                     }
                     @Override
